@@ -1,4 +1,3 @@
 import { io } from "socket.io-client";
-import { SOCKET_URL } from "./config/api";
 
-export const socket = io(SOCKET_URL);
+export const socket = io(import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000');

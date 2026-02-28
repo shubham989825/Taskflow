@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { socket } from "../socket";
 import "../style/board.css";
-import { API_BASE_URL } from "../config/api";
 
 type TaskUpdate =
   | {
@@ -36,7 +35,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, boardId, onClose, onUpdate 
   const handleSave = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${API_BASE_URL}/api/tasks/${task._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${task._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +57,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, boardId, onClose, onUpdate 
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
-      await fetch(`${API_BASE_URL}/api/tasks/${task._id}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${task._id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
