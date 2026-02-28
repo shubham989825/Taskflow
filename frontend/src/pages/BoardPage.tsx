@@ -9,6 +9,7 @@ import {
   Draggable,
   type DropResult,
 } from "@hello-pangea/dnd";
+import { API_BASE_URL } from "../config/api";
 
 interface Task {
   _id: string;
@@ -37,7 +38,7 @@ const BoardPage = () => {
         setLoading(true);
         setError("");
         const token = localStorage.getItem("token");
-        const res = await fetch(`http://localhost:5000/api/tasks/${boardId}`, {
+        const res = await fetch(`${API_BASE_URL}/api/tasks/${boardId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         
@@ -100,7 +101,7 @@ const BoardPage = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/tasks/${boardId}`, {
+      const res = await fetch(`${API_BASE_URL}/api/tasks/${boardId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +136,7 @@ const BoardPage = () => {
     const newStatus = destination.droppableId;
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/tasks/${task._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

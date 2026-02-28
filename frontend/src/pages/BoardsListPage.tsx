@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/board.css";
+import { API_BASE_URL } from "../config/api";
 
 interface Board {
   _id: string;
@@ -32,7 +33,7 @@ const BoardsListPage = () => {
           return;
         }
         
-        const res = await fetch("http://localhost:5000/api/boards", {
+        const res = await fetch(`${API_BASE_URL}/api/boards`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         
@@ -66,7 +67,7 @@ const BoardsListPage = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/boards", {
+      const res = await fetch(`${API_BASE_URL}/api/boards`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +93,7 @@ const BoardsListPage = () => {
   const handleDeleteBoard = async (boardId: string) => {
     try {
       const token = localStorage.getItem("token");
-      await fetch(`http://localhost:5000/api/boards/${boardId}`, {
+      const res = await fetch(`${API_BASE_URL}/api/boards/${boardId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
