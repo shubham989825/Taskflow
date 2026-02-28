@@ -14,9 +14,11 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
- export const io = new Server(server, {
+export const io = new Server(server, {
     cors: {
-        origin: "*",
+        origin: process.env.FRONTEND_URI,
+        methods: ["GET", "POST"],
+        credentials: true
     },
 });
 io.on("connection", (socket) => {
