@@ -4,7 +4,6 @@
   font-family: Arial, sans-serif;
   min-height: 100vh;
   background: #f8f9fa;
-  border: 3px solid #4f46e5; /* Test style - remove this line if visible */
 }
 
 .board-container {
