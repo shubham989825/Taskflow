@@ -5,9 +5,9 @@
 Add these environment variables in your Render dashboard:
 
 ### 1. FRONTEND_URI
-- **Value**: Your deployed frontend URL (e.g., `https://your-app-name.onrender.com`)
+- **Value**: Your deployed frontend URL (e.g., `https://taskflow-ten-omega.vercel.app`)
 - **Purpose**: CORS configuration for API requests
-- **Example**: `https://taskflow-frontend.onrender.com`
+- **Example**: `https://taskflow-ten-omega.vercel.app`
 
 ### 2. MONGO_URI
 - **Value**: Your MongoDB connection string
